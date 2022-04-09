@@ -2,91 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 
 // create variables for password contents
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var uppercase = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-var lowercase = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-var symbols = [
-  "@",
-  "%",
-  "+",
-  "/",
-  "'",
-  "!",
-  "#",
-  "$",
-  "^",
-  "?",
-  ":",
-  ",",
-  ")",
-  "(",
-  "}",
-  "{",
-  "]",
-  "[",
-  "~",
-  "-",
-  "_",
-  ".",
-];
+var numbers = ["0123456789"];
+var uppercase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+var lowercase = ["abcdefghijklmnopqrstuvwxyz"];
+var symbols = ["@%+/'!#$^?:,)(}{][~-_."];
 var passwordinternal = "";
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   var finalPassword = "";
@@ -114,16 +34,16 @@ function generatePassword() {
     alert("Please choose at least 1 parameter for the password");
     return generatePassword;
   }
-  if (numbersyes) {
+  if (numbersyes === true) {
     passwordinternal += numbers;
   }
-  if (lowercaseyes) {
+  if (lowercaseyes === true) {
     passwordinternal += lowercase;
   }
-  if (uppercaseyes) {
+  if (uppercaseyes === true) {
     passwordinternal += uppercase;
   }
-  if (symbolsyes) {
+  if (symbolsyes === true) {
     passwordinternal += symbols;
   }
   for (var i = 0; i < length; i++) {
@@ -140,3 +60,5 @@ function writePassword() {
 
   passwordText.value = password;
 }
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
