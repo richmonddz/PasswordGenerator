@@ -85,9 +85,12 @@ var symbols = [
 ];
 var passwordinternal = "";
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 function generatePassword() {
   var finalPassword = "";
-  var pwlength = prompt(
+  var length = prompt(
     "Please choose a password length of 8 and 128 characters"
   );
   var numbersyes = confirm(
@@ -102,10 +105,10 @@ function generatePassword() {
   var symbolsyes = confirm(
     "Do you want symbols/special characters included into your passsword?"
   );
-  if (isNaN(pwlength)) {
+  if (isNaN(length)) {
     alert("Please put a numerical value between 8 and 128");
   }
-  if (pwlength < 8 || pwlength > 128)
+  if (length < 8 || length > 128)
     alert("Please choose a number between 8 and 128.");
   else if (!numbersyes && !lowercaseyes && !uppercaseyes && !symbolsyes) {
     alert("Please choose at least 1 parameter for the password");
@@ -123,21 +126,17 @@ function generatePassword() {
   if (symbolsyes) {
     passwordinternal += symbols;
   }
-  for (var i = 0; i < pwlength; i++) {
+  for (var i = 0; i < length; i++) {
     finalPassword += passwordinternal.charAt(
       Math.floor(Math.random() * passwordinternal.length)
     );
   }
-  return result;
+  return finalPassword;
+}
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-  }
-
-  // Add event listener to generate button
-  generateBtn.addEventListener("click", writePassword);
+  passwordText.value = password;
 }
