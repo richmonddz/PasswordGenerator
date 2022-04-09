@@ -83,52 +83,53 @@ var symbols = [
   "_",
   ".",
 ];
+var passwordinternal = "";
 
 function generatePassword() {
+  var finalPassword = "";
   var pwlength = prompt(
     "Please choose a password length of 8 and 128 characters"
   );
+  var numbersyes = confirm(
+    "Do you want numbers to be included into your password?"
+  );
+  var lowercaseyes = confirm(
+    "Do you want lowercase letters included into your password?"
+  );
+  var uppercaseyes = confirm(
+    "Do you want uppercase letters included into your password?"
+  );
+  var symbolsyes = confirm(
+    "Do you want symbols/special characters included into your passsword?"
+  );
   if (isNaN(pwlength)) {
     alert("Please put a numerical value between 8 and 128");
-    return generatePassword();
   }
   if (pwlength < 8 || pwlength > 128)
     alert("Please choose a number between 8 and 128.");
-  return generatePassword();
-}
-var numbersyes = confirm(
-  "Do you want numbers to be included into your password?"
-);
-if (numbers) {
-  passwordinternal += numbers;
-}
-var lowercaseyes = confirm(
-  "Do you want lowercase letters included into your password?"
-);
-if (lowercaseyes) {
-  passwordinternal += lowercase;
-}
-var uppercaseyes = confirm(
-  "Do you want uppercase letters included into your password?"
-);
-if (uppercaseyes) {
-  passwordinternal += uppercase;
-}
-var symbolsyes = confirm(
-  "Do you want symbols/special characters included into your passsword?"
-);
-if (symbolsyes) {
-  passwordinternal += symbols;
-}
-var passwordinternal = "";
+  else if (!numbersyes && !lowercaseyes && !uppercaseyes && !symbolsyes) {
+    alert("Please choose at least 1 parameter for the password");
+    return generatePassword;
+  }
+  if (numbersyes) {
+    passwordinternal += numbers;
+  }
+  if (lowercaseyes) {
+    passwordinternal += lowercase;
+  }
+  if (uppercaseyes) {
+    passwordinternal += uppercase;
+  }
+  if (symbolsyes) {
+    passwordinternal += symbols;
+  }
+  for (var i = 0; i < pwlength; i++) {
+    finalPassword += passwordinternal.charAt(
+      Math.floor(Math.random() * passwordinternal.length)
+    );
+  }
+  return result;
 
-if (!numbersyes && !lowercaseyes && !uppercaseyes && !symbolsyes) {
-  alert("You must at least choose 1 character type!");
-}
-for (var i = 0; i < pwlength; i++) {
-  result += passwordinternal.charAt(
-    Math.floor(Math.random() * passwordinternal.length)
-  );
   // Write password to the #password input
   function writePassword() {
     var password = generatePassword();
