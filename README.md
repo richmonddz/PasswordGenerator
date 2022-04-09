@@ -5,3 +5,7 @@ Working on this project was challenging. We had to use java script and apply new
 To use the password generator you will have to click on the generate password button. After, you will see a prompt for password length and parameters (numbers,lowercase letters, uppercase letters, symbols). At least one must be chosen and a password length of 8-128 chracters. Once a password is created you can copy paste to where you desire.
 
 **TO CREATE ANOTHER PASSWORD PLEASE REFRESH THE PAGE AND START AGAIN.**
+
+https://richmonddz.github.io/PasswordGenerator/
+
+![alt text](https://github.com/richmonddz/PasswordGenerator/blob/main/Screen%20Shot%202022-04-09%20at%203.51.37%20AM.png)
